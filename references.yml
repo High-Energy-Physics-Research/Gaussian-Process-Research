@@ -1,10 +1,18 @@
 references:
-  - title: Introduction to Electrodynamics
-    author: David J. Griffiths
-    year: 2017
-    note: main textbook
+  - title: Gaussian Process Regression from First Principles
+    author: Michael F. Tesch
+    year: 2018
+    link: https://towardsdatascience.com/gaussian-process-regression-from-first-principles-833f4aa5f842/
+    note: introductory tutorial, intuition and derivation
 
-  - title: Classical Electrodynamics
-    author: J. D. Jackson
-    year: 1998
-    note: advanced reference
+  - title: Modern Gaussian Process Regression
+    author: Michael F. Tesch
+    year: 2019
+    link: https://towardsdatascience.com/modern-gaussian-process-regression-9c5196ca87ab/
+    note: advanced concepts and modern GP formulations
+
+  - title: Batched Multi-Dimensional Gaussian Process Regression with GPyTorch
+    author: Michael F. Tesch
+    year: 2020
+    link: https://towardsdatascience.com/batched-multi-dimensional-gaussian-process-regression-with-gpytorch-3a6425185109/
+    note: scalable GP regression, GPyTorch implementation
