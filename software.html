@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>High-Energy-Physics-Research/Gaussian-Process-Research — Estudos</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./css/paleta_cores.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/nav_bar.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+    <link rel="stylesheet" href="./css/software.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/icons8-caderno-circular-16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/icons8-caderno-circular-32.png">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EM7FEY66C3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EM7FEY66C3');
+</script>
+
+<body>
+    <header class="navbar">
+        <div class="wrap">
+            <!-- Link extra à esquerda -->
+            <a class="repo-link" href="https://academic-codex.github.io/" title="Repositório Central">⚛</a>
+
+            <div class="brand"><a href="./index.html">Homepage</a></div>
+            <nav class="nav">
+                <a href="./research.html">References</a>
+                <a href="./software.html">Studies</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="main-wide">
+        <div class="layout">
+            <aside class="sidebar">
+                <input id="q" class="search" placeholder="Filter notebooks..." />
+                <ul id="tree" class="tree"></ul>
+            </aside>
+            <section class="viewer">
+                <iframe id="viewer" src=""></iframe>
+            </section>
+        </div>
+    </main>
+
+    <!-- injeta a árvore apenas nesta página -->
+    <script>
+        window.TREE_DATA = {"type": "dir", "name": "target", "path": "", "children": []};
+    </script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
