@@ -13082,7 +13082,104 @@ div#notebook {
     }
     init_mathjax();
     </script>
-<!-- End of mathjax configuration --></head>
+<!-- End of mathjax configuration --><style id="wide-notebook">
+        /* make nbconvert classic use full width */
+        #notebook-container {
+        width: 100% !important;
+        max-width: none !important;
+        }
+        .container, .container-fluid {
+        width: 100% !important;
+        max-width: none !important;
+        }
+        div#notebook {
+        width: 100% !important;
+        }
+        body {
+        margin: 0 !important;
+        padding: 0 !important;
+        }
+        /* ====== Reduce classic nbconvert left gutter + top gap ====== */
+
+        /* remove o "gutter" / margem esquerda que vira aquele bloco vazio */
+        div.prompt.input_prompt {
+        width: 42px !important;      /* era ~90-110px; ajuste fino aqui */
+        min-width: 42px !important;
+        }
+
+        /* alguns themes usam .prompt */
+        .prompt {
+        width: 42px !important;
+        min-width: 42px !important;
+        }
+
+        /* reduz padding horizontal do notebook (onde sobra ar demais) */
+        #notebook {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        }
+
+        /* reduz padding interno das células (ajuda a “encostar” mais no layout) */
+        div.cell {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        }
+
+        /* mata aquele gap no topo do primeiro conteúdo */
+        #notebook-container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        }
+
+        /* se o classic estiver colocando sombra/borda feia no container, desliga */
+        #notebook-container {
+        box-shadow: none !important;
+        border: 0 !important;
+        }
+
+        /* garante que o body não crie faixa branca extra */
+        html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        }
+        div.prompt.input_prompt,
+        div.prompt.output_prompt {
+        display: none !important;
+        }
+
+        /* Indent só no conteúdo renderizado do Markdown (não mexe em código/output) */
+        #notebook .text_cell_render p,
+        #notebook .text_cell_render h1,
+        #notebook .text_cell_render h2,
+        #notebook .text_cell_render h3,
+        #notebook .text_cell_render h4,
+        #notebook .text_cell_render h5,
+        #notebook .text_cell_render h6 {
+            text-indent: 55px; /* ajuste aqui */
+        }
+
+        /* Remove indentação de p que esteja dentro de listas */
+        #notebook .text_cell_render ul p,
+        #notebook .text_cell_render ol p{
+        text-indent: 0;
+        }
+
+        #notebook ul,
+        #notebook ol {
+            margin-left: 55px;
+        }
+
+        /* Justificar parágrafos no conteúdo do notebook */
+        #notebook p,
+        #notebook li {
+        text-align: justify;
+        /* text-justify: inter-word;   melhor em alguns browsers */
+        hyphens: auto;              /* hifeniza quando suportado */
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        }
+        </style>
+</head>
 <body>
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
@@ -13094,6 +13191,36 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=7572eeb2"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Hidrodin%C3%A2mica-Relativ%C3%ADstica-como-Teoria-Efetiva">Hidrodinâmica Relativística como Teoria Efetiva<a class="anchor-link" href="#Hidrodin%C3%A2mica-Relativ%C3%ADstica-como-Teoria-Efetiva">¶</a></h1><p>A hidrodinâmica relativística descreve a evolução de sistemas quânticos de muitos corpos
+em termos de campos coletivos, como a densidade de energia e o campo de velocidades.
+Esses campos não são fundamentais, mas emergem após um processo de coarse-graining
+dos graus de liberdade microscópicos.
+Nesse regime, a validade da descrição exige equilíbio local e gradientes pequenos.
+A dinâmica resultante é governada por leis de conservação,
+que codificam informações microscópicas de forma altamente comprimida.
+Assim, a hidrodinâmica pode ser vista como uma teoria efetiva universal,
+independente dos detalhes da interação fundamental.
+Essa universalidade é uma das razões de seu enorme poder descritivo.</p>
+<p>A conservação do tensor energia-momento é expressa por
+$$
+\partial_\mu T^{\mu\nu} = 0.
+$$</p>
+<p>Para um fluido perfeito, o tensor energia-momento assume a forma
+$$
+T^{\mu\nu} = (\varepsilon + p) u^\mu u^\nu - p\, g^{\mu\nu},
+$$
+onde $\varepsilon$ é a densidade de energia, $p$ a pressão e $u^\mu u_\mu = 1$.</p>
+<p>No caso de expansão longitudinal simples, a equação de evolução da energia se reduz a
+$$
+\frac{d\varepsilon}{d\tau} = -\frac{\varepsilon + p}{\tau},
+$$
+mostrando explicitamente como a expansão do sistema controla o resfriamento do fluido.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=4f5d7e1f"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 </div>
