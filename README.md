@@ -1,2 +1,0 @@
-# Gaussian-Process-Research
-Research

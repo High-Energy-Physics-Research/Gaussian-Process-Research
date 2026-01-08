@@ -1,0 +1,19 @@
+name: Listener Update Websites
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    uses: naavilam/github-infra-templates/.github/workflows/repository-website-update.yml@main
+    with:
+      repo: ${{ github.repository }}
+    secrets:
+      PROVISIONER_APP_ID: ${{ secrets.PROVISIONER_APP_ID }}
+      PROVISIONER_PRIVATE_KEY_PEM: ${{ secrets.PROVISIONER_PRIVATE_KEY_PEM }}
