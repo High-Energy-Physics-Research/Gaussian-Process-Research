@@ -1,10 +1,12 @@
-name: Listener Update Websites
+name: Listener Update README.md
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      target:
+        description: "Target repository or else all"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -13,7 +15,8 @@ jobs:
   run:
     uses: naavilam/github-infra-templates/.github/workflows/repository-readme-update.yml@main
     with:
-      repo: ${{ github.repository }}
+      repo: ${{ inputs.target }}
+      registry_path: ".github/registry/repos.yml"
     secrets:
       PROVISIONER_APP_ID: ${{ secrets.PROVISIONER_APP_ID }}
       PROVISIONER_PRIVATE_KEY_PEM: ${{ secrets.PROVISIONER_PRIVATE_KEY_PEM }}
