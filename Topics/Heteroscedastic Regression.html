@@ -13186,7 +13186,7 @@ div#notebook {
 <div class="container" id="notebook-container">
 <div class="cell border-box-sizing code_cell rendered celltag_hide-code" id="cell-id=f65cf58e">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">htmltools</span><span class="p">)</span>
@@ -13224,6 +13224,30 @@ div#notebook {
 <span class="s">  margin-top: 10px;</span>
 <span class="s">  font-size: 1.02em;</span>
 <span class="s">  color: #333;</span>
+<span class="s">}</span>
+
+<span class="s">.deps-box {</span>
+<span class="s">  border-left: 6px solid #1f4fd8;</span>
+<span class="s">  background: linear-gradient(135deg, #f4f7ff, #ffffff);</span>
+<span class="s">  padding: 16px 20px;</span>
+<span class="s">  margin: 20px 0;</span>
+<span class="s">  border-radius: 6px;</span>
+<span class="s">  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;</span>
+<span class="s">}</span>
+
+<span class="s">.deps-title {</span>
+<span class="s">  font-weight: 600;</span>
+<span class="s">  font-size: 1.1em;</span>
+<span class="s">  margin-bottom: 8px;</span>
+<span class="s">  color: #1f4fd8;</span>
+<span class="s">}</span>
+
+<span class="s">.deps-code {</span>
+<span class="s">  background-color: #f0f2f5;</span>
+<span class="s">  padding: 10px 12px;</span>
+<span class="s">  border-radius: 4px;</span>
+<span class="s">  font-family: ui-monospace, Menlo, Consolas, monospace;</span>
+<span class="s">  font-size: 0.95em;</span>
 <span class="s">}</span>
 <span class="s">&lt;/style&gt;</span>
 <span class="s">"</span><span class="p">))</span>
@@ -13267,6 +13291,30 @@ div#notebook {
   margin-top: 10px;
   font-size: 1.02em;
   color: #333;
+}
+
+.deps-box {
+  border-left: 6px solid #1f4fd8;
+  background: linear-gradient(135deg, #f4f7ff, #ffffff);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.deps-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #1f4fd8;
+}
+
+.deps-code {
+  background-color: #f0f2f5;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.95em;
 }
 </style>
 </div>
@@ -13347,6 +13395,61 @@ div#notebook {
 <li>Função de custo baseada em log-verossimilhança Gaussiana</li>
 <li>Visualização dinâmica do treinamento e geração de GIF</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9d709432">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-r"><pre><span></span><span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_html</span><span class="p">(</span><span class="nf">HTML</span><span class="p">(</span><span class="s">"</span>
+<span class="s">&lt;div class='deps-box'&gt;</span>
+<span class="s">  &lt;div class='deps-title'&gt;Kernel R + dependências necessárias&lt;/div&gt;</span>
+
+<span class="s">  &lt;p style='margin-bottom:8px; font-size:0.95em; color:#333;'&gt;</span>
+<span class="s">    Este notebook utiliza um &lt;b&gt;kernel R&lt;/b&gt; com as seguintes bibliotecas instaladas:</span>
+<span class="s">  &lt;/p&gt;</span>
+
+<span class="s">  &lt;div class='deps-code'&gt;</span>
+<span class="s">&lt;pre&gt;</span>
+<span class="s">install.packages(c(</span>
+<span class="s">  \"IRdisplay\",</span>
+<span class="s">  \"ggplot2\",</span>
+<span class="s">  \"patchwork\",</span>
+<span class="s">  \"gifski\"</span>
+<span class="s">))</span>
+<span class="s">&lt;/pre&gt;</span>
+<span class="s">  &lt;/div&gt;</span>
+<span class="s">&lt;/div&gt;</span>
+<span class="s">"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<div class="deps-box">
+<div class="deps-title">Kernel R + dependências necessárias</div>
+<p style="margin-bottom:8px; font-size:0.95em; color:#333;">
+    Este notebook utiliza um <b>kernel R</b> com as seguintes bibliotecas instaladas:
+  </p>
+<div class="deps-code">
+<pre>
+install.packages(c(
+  "IRdisplay",
+  "ggplot2",
+  "patchwork",
+  "gifski"
+))
+</pre>
 </div>
 </div>
 </div>
