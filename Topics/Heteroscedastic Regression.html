@@ -13178,6 +13178,11 @@ div#notebook {
         -webkit-hyphens: auto;
         -ms-hyphens: auto;
         }
+        .simulation-box,
+        .deps-box {
+            max-width: 1200px;
+            margin: 24px auto;
+        }
         </style>
 </head>
 <body>
@@ -13586,29 +13591,7 @@ GIF gerado em:  hetero_train.gif
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=eb01f8e9">
-<div class="input">
-<div class="prompt input_prompt">In [22]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">base64enc</span><span class="p">)</span>
-
-<span class="n">gif_path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"hetero_train.gif"</span>
-<span class="n">gif_raw</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readBin</span><span class="p">(</span><span class="n">gif_path</span><span class="p">,</span><span class="w"> </span><span class="s">"raw"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file.info</span><span class="p">(</span><span class="n">gif_path</span><span class="p">)</span><span class="o">$</span><span class="n">size</span><span class="p">)</span>
-
-<span class="n">gif_b64</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">base64enc</span><span class="o">::</span><span class="nf">base64encode</span><span class="p">(</span><span class="n">gif_raw</span><span class="p">)</span>
-
-<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_html</span><span class="p">(</span>
-<span class="w">  </span><span class="nf">sprintf</span><span class="p">(</span>
-<span class="w">    </span><span class="s">'&lt;img src="data:image/gif;base64,%s" style="width:80%%; display:block; margin:auto;"&gt;'</span><span class="p">,</span>
-<span class="w">    </span><span class="n">gif_b64</span>
-<span class="w">  </span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<div class="cell border-box-sizing code_cell rendered celltag_hide-input" id="cell-id=eb01f8e9">
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
