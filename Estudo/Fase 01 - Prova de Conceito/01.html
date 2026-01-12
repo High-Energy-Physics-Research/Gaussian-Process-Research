@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Gaussian Process</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
+<title>01</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
   import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
@@ -13189,19 +13189,374 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=4f5d7e1f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=7bab28af"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<div style="
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f5f7fa;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  max-width: 1000px;
+">
+</div>
+<h1 style="margin-top: 0; font-size: 2.2em;">
+    Dataset Description
+  </h1>
+<h2 style="margin-top: 0.2em; font-weight: 400; color: #c7d9e5;">
+    Pb–Pb Collisions at √s<sub>NN</sub> = 5.02 TeV
+  </h2>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.25); margin: 20px 0;"/>
+<p style="margin-top: 18px; font-style: italic; color: #cde6f5;">
+    This dataset serves as a benchmark example for studying Gaussian Process regression
+    under different noise correlation hypotheses, prior to extending the analysis to
+    high-dimensional emulators.
+  </p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.25); margin: 20px 0;"/>
+<div style="
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f5f7fa;
+  padding: 22px 26px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  max-width: 1100px;
+">
+</div>
+<h3>Experiment</h3>
+<ul>
+<li><b>Accelerator:</b> Large Hadron Collider (LHC), CERN</li>
+<li><b>Experiment:</b> ALICE</li>
+<li><b>Collision system:</b> Pb–Pb</li>
+<li><b>Center-of-mass energy:</b> √s<sub>NN</sub> = 5.02 TeV</li>
+<li><b>Final state:</b> Charged particles</li>
+</ul>
+<h3>Observable</h3>
+<ul>
+<li><b>Measured quantity:</b> <i>v</i><sub>0</sub>(p<sub>T</sub>)</li>
+<li><b>Independent variable:</b> Transverse momentum p<sub>T</sub> [GeV]</li>
+<li><b>p<sub>T</sub> range:</b> 0.55 – 9.46 GeV</li>
+<li>
+<b>Physical interpretation:</b>
+      Isotropic component of the azimuthal distribution,
+      sensitive to collective and radial flow effects.
+    </li>
+</ul>
+<h3>Event Selection</h3>
+<ul>
+<li><b>Centrality class:</b> 50–60% (semi-peripheral)</li>
+<li><b>Reference p<sub>T</sub>:</b> 0.5 – 2 GeV</li>
+<li><b>Pseudorapidity gap:</b> |η| = 1</li>
+</ul>
+<h3>Data Source</h3>
+<ul>
+<li><b>Repository:</b> HEPData</li>
+<li><b>Table DOI:</b> 10.17182/hepdata.158359.v1/t20</li>
+<li><b>Original figure:</b> Figure 4 (panel a)</li>
+<li><b>CSV file:</b> HEPData-ins2907010-v1-Figure_4a_cent7.csv</li>
+</ul>
+<h3>CSV Structure</h3>
+<table style="
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+  ">
+<thead>
+<tr>
+<th style="border-bottom: 1px solid rgba(255,255,255,0.3); padding: 8px;">Column</th>
+<th style="border-bottom: 1px solid rgba(255,255,255,0.3); padding: 8px;">Quantity</th>
+<th style="border-bottom: 1px solid rgba(255,255,255,0.3); padding: 8px;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>p<sub>T</sub></td><td>Bin center [GeV]</td></tr>
+<tr><td>2</td><td>v<sub>0</sub>(p<sub>T</sub>)</td><td>Measured value</td></tr>
+<tr><td>3</td><td>stat +</td><td>Positive statistical uncertainty</td></tr>
+<tr><td>4</td><td>stat −</td><td>Negative statistical uncertainty</td></tr>
+<tr><td>5</td><td>syst +</td><td>Positive systematic uncertainty</td></tr>
+<tr><td>6</td><td>syst −</td><td>Negative systematic uncertainty</td></tr>
+</tbody>
+</table>
+<p>
+<i><strong>Note</strong>: Statistical uncertainties are treated as independent (i.i.d.) across p<sub>T</sub> bins,
+    while systematic uncertainties are assumed to be potentially correlated and are
+    explicitly modeled through a non-diagonal covariance matrix.</i>
+</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=cdd6d98f">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=735a16f6">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'See http://www.gaussianprocess.org/gpml/code/matlab/doc/ for details.'</span><span class="p">)</span>
-<span class="n">setup_gpml</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">&lt;div style="background:#0f2027; color:#f5f7fa; padding:20px; border-radius:12px;"&gt;</span>
+<span class="s2">  &lt;h2&gt;📊 Dataset Overview — Pb–Pb at √s&lt;sub&gt;NN&lt;/sub&gt; = 5.02 TeV&lt;/h2&gt;</span>
+
+<span class="s2">  &lt;table style="width:100%; border-collapse:collapse;"&gt;</span>
+<span class="s2">    &lt;tr&gt;</span>
+<span class="s2">      &lt;td style="vertical-align:top; padding-right:20px;"&gt;</span>
+<span class="s2">        &lt;b&gt;Experiment&lt;/b&gt;&lt;br&gt;</span>
+<span class="s2">        LHC (CERN)&lt;br&gt;</span>
+<span class="s2">        ALICE&lt;br&gt;</span>
+<span class="s2">        Pb–Pb&lt;br&gt;</span>
+<span class="s2">        √s&lt;sub&gt;NN&lt;/sub&gt; = 5.02 TeV&lt;br&gt;</span>
+<span class="s2">        Charged particles</span>
+<span class="s2">      &lt;/td&gt;</span>
+
+<span class="s2">      &lt;td style="vertical-align:top;"&gt;</span>
+<span class="s2">        &lt;b&gt;Observable&lt;/b&gt;&lt;br&gt;</span>
+<span class="s2">        v&lt;sub&gt;0&lt;/sub&gt;(p&lt;sub&gt;T&lt;/sub&gt;)&lt;br&gt;</span>
+<span class="s2">        p&lt;sub&gt;T&lt;/sub&gt; ∈ [0.55, 9.46] GeV&lt;br&gt;&lt;br&gt;</span>
+
+<span class="s2">        &lt;b&gt;Centrality&lt;/b&gt;&lt;br&gt;</span>
+<span class="s2">        50–60%&lt;br&gt;&lt;br&gt;</span>
+
+<span class="s2">        &lt;b&gt;Data&lt;/b&gt;&lt;br&gt;</span>
+<span class="s2">        &lt;a href="https://doi.org/10.17182/hepdata.158359.v1/t20"</span>
+<span class="s2">           target="_blank"</span>
+<span class="s2">           style="color:#9ad1ff;"&gt;</span>
+<span class="s2">           HEPData DOI</span>
+<span class="s2">        &lt;/a&gt;</span>
+<span class="s2">      &lt;/td&gt;</span>
+<span class="s2">    &lt;/tr&gt;</span>
+<span class="s2">  &lt;/table&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">"""</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<div style="background:#0f2027; color:#f5f7fa; padding:20px; border-radius:12px;">
+<h2>📊 Dataset Overview — Pb–Pb at √s<sub>NN</sub> = 5.02 TeV</h2>
+<table style="width:100%; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; padding-right:20px;">
+<b>Experiment</b><br/>
+        LHC (CERN)<br/>
+        ALICE<br/>
+        Pb–Pb<br/>
+        √s<sub>NN</sub> = 5.02 TeV<br/>
+        Charged particles
+      </td>
+<td style="vertical-align:top;">
+<b>Observable</b><br/>
+        v<sub>0</sub>(p<sub>T</sub>)<br/>
+        p<sub>T</sub> ∈ [0.55, 9.46] GeV<br/><br/>
+<b>Centrality</b><br/>
+        50–60%<br/><br/>
+<b>Data</b><br/>
+<a href="https://doi.org/10.17182/hepdata.158359.v1/t20" style="color:#9ad1ff;" target="_blank">
+           HEPData DOI
+        </a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=d9acb8e7">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_hepdata_csv</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c1"># pula linhas de comentário iniciadas com '#'</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"#"</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># separa por vírgula</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)]</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">pT</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">stat_p</span><span class="p">,</span> <span class="n">stat_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">syst_p</span><span class="p">,</span> <span class="n">syst_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span>
+
+    <span class="c1"># transforma em 1 sigma simétrico (média dos módulos)</span>
+    <span class="n">sig_stat</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stat_p</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stat_m</span><span class="p">))</span>
+    <span class="n">sig_syst</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">syst_p</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">syst_m</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sig_stat</span><span class="p">,</span> <span class="n">sig_syst</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=699d8e97">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">se_kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Squared Exponential kernel"""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xp</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sigma_f</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">/</span> <span class="p">(</span><span class="n">ell</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=008ca7e1">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gp_posterior</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">K_func</span><span class="p">,</span> <span class="n">Sigma_noise</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    y ~ N(0, K_func(x,x) + Sigma_noise)</span>
+<span class="sd">    posterior over f(x_test)</span>
+<span class="sd">    """</span>
+    <span class="n">Kxx</span> <span class="o">=</span> <span class="n">K_func</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">)</span>
+    <span class="n">Kxs</span> <span class="o">=</span> <span class="n">K_func</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">)</span>
+    <span class="n">Kss</span> <span class="o">=</span> <span class="n">K_func</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span>  <span class="n">x_test</span><span class="p">)</span>
+
+    <span class="n">C</span> <span class="o">=</span> <span class="n">Kxx</span> <span class="o">+</span> <span class="n">Sigma_noise</span>
+
+    <span class="c1"># Cholesky para estabilidade numérica</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">C</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c1"># alpha = C^{-1} y via cho_solve manual</span>
+    <span class="c1"># resolve L v = y</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># resolve L^T alpha = v</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="c1"># mean = Kxs^T alpha</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">Kxs</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">alpha</span>
+
+    <span class="c1"># cov = Kss - Kxs^T C^{-1} Kxs</span>
+    <span class="c1"># resolve L w = Kxs</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">Kxs</span><span class="p">)</span>
+    <span class="n">cov</span> <span class="o">=</span> <span class="n">Kss</span> <span class="o">-</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">w</span>
+
+    <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">cov</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=53c16204">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_marginal_likelihood</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">K_func</span><span class="p">,</span> <span class="n">Sigma_noise</span><span class="p">,</span> <span class="n">x_train</span><span class="p">):</span>
+    <span class="n">Kxx</span> <span class="o">=</span> <span class="n">K_func</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">Kxx</span> <span class="o">+</span> <span class="n">Sigma_noise</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">C</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c1"># log|C| = 2 sum log diag(L)</span>
+    <span class="n">logdet</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">L</span><span class="p">)))</span>
+
+    <span class="c1"># y^T C^{-1} y</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">quad</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">v</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">quad</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">logdet</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=1c1dc05d">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">csv_path</span> <span class="o">=</span> <span class="s2">"HEPData-ins2907010-v1-Figure_4a_cent7.csv"</span>  <span class="c1"># &lt;-- ajuste aqui</span>
+<span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sig_stat</span><span class="p">,</span> <span class="n">sig_syst</span> <span class="o">=</span> <span class="n">read_hepdata_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span>
+
+<span class="c1"># ordena por pT (só por segurança)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pT</span><span class="p">)</span>
+<span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sig_stat</span><span class="p">,</span> <span class="n">sig_syst</span> <span class="o">=</span> <span class="n">pT</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">sig_stat</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">sig_syst</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="c1"># grid de teste pra desenhar curva suave</span>
+<span class="n">pT_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">pT</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pT</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Função kernel do "sinal físico"</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_Kfunc</span><span class="p">(</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">se_kernel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma_f</span><span class="o">=</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="o">=</span><span class="n">ell</span><span class="p">)</span>
+
+<span class="c1"># --- Modelo A: ruído DIAGONAL (stat+syst em quadratura)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Sigma_diag</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sig_stat</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sig_syst</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># --- Modelo B: ruído CORRELACIONADO no sistemático (SE no pT)</span>
+<span class="c1"># Sigma = diag(sig_stat^2) + alpha^2 * (sig_syst_i sig_syst_j) * exp(- (ΔpT)^2 / (2 ell_s^2))</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Sigma_corr</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">ell_s</span><span class="p">):</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sig_stat</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># matriz de correlação SE</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="p">(</span><span class="n">pT</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">pT</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">d2</span> <span class="o">/</span> <span class="p">(</span><span class="n">ell_s</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">Ksys</span> <span class="o">=</span> <span class="p">(</span><span class="n">sig_syst</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig_syst</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">+</span> <span class="p">(</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ksys</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7be6d1d8">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sigma_f_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">ell_grid</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Modelo A</span>
+<span class="n">best_A</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sigma_f</span> <span class="ow">in</span> <span class="n">sigma_f_grid</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="n">ell_grid</span><span class="p">:</span>
+        <span class="n">Kf</span> <span class="o">=</span> <span class="n">make_Kfunc</span><span class="p">(</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">)</span>
+        <span class="n">lml</span> <span class="o">=</span> <span class="n">log_marginal_likelihood</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Kf</span><span class="p">,</span> <span class="n">Sigma_diag</span><span class="p">(),</span> <span class="n">pT</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lml</span> <span class="o">&gt;</span> <span class="n">best_A</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">best_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">lml</span><span class="p">,</span> <span class="p">(</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">))</span>
+
+<span class="c1"># Modelo B (inclui alpha e ell_s)</span>
+<span class="n">alpha_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ell_s_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+
+<span class="n">best_B</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sigma_f</span> <span class="ow">in</span> <span class="n">sigma_f_grid</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="n">ell_grid</span><span class="p">:</span>
+        <span class="n">Kf</span> <span class="o">=</span> <span class="n">make_Kfunc</span><span class="p">(</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alpha_grid</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ell_s</span> <span class="ow">in</span> <span class="n">ell_s_grid</span><span class="p">:</span>
+                <span class="n">Sig</span> <span class="o">=</span> <span class="n">Sigma_corr</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">ell_s</span><span class="p">)</span>
+                <span class="n">lml</span> <span class="o">=</span> <span class="n">log_marginal_likelihood</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Kf</span><span class="p">,</span> <span class="n">Sig</span><span class="p">,</span> <span class="n">pT</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">lml</span> <span class="o">&gt;</span> <span class="n">best_B</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">best_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">lml</span><span class="p">,</span> <span class="p">(</span><span class="n">sigma_f</span><span class="p">,</span> <span class="n">ell</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">ell_s</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Best A (diag):    LML=</span><span class="si">%.2f</span><span class="s2">  sigma_f=</span><span class="si">%.4f</span><span class="s2">  ell=</span><span class="si">%.4f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">best_A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">best_A</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Best B (corr):    LML=</span><span class="si">%.2f</span><span class="s2">  sigma_f=</span><span class="si">%.4f</span><span class="s2">  ell=</span><span class="si">%.4f</span><span class="s2">  alpha=</span><span class="si">%.4f</span><span class="s2">  ell_s=</span><span class="si">%.4f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">best_B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">best_B</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -13211,290 +13566,74 @@ div#notebook {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>See http://www.gaussianprocess.org/gpml/code/matlab/doc/ for details.
-GPML loaded from:
-/Users/chanayo/Library/Mobile Documents/com~apple~CloudDocs/Repository/Academia/Research/High-Energy-Physics-Research/Gaussian-Process-Research/Topics/../external/gpml
+<pre>Best A (diag):    LML=115.59  sigma_f=0.1733  ell=3.3103
+Best B (corr):    LML=125.35  sigma_f=0.1529  ell=2.8034  alpha=0.5000  ell_s=0.3000
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=92152bb5">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=d7a56b72">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span><span class="w"> </span><span class="nb">disp</span><span class="p">(</span><span class="s">'clear all, close all'</span><span class="p">)</span>
-<span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">,</span><span class="w"> </span><span class="nb">close</span><span class="w"> </span><span class="nb">all</span>
-<span class="n">write_fig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=da16d77e">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">peaks</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e8e36f77">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'meanfunc = {@meanSum, {@meanLinear, @meanConst}}; hyp.mean = [0.5; 1];'</span><span class="p">)</span>
-<span class="n">meanfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{@</span><span class="n">meanSum</span><span class="p">,</span><span class="w"> </span><span class="p">{@</span><span class="n">meanLinear</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">meanConst</span><span class="p">}};</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'covfunc = {@covMaterniso, 3}; ell = 1/4; sf = 1; hyp.cov = log([ell; sf]);'</span><span class="p">)</span>
-<span class="n">covfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{@</span><span class="n">covMaterniso</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="n">ell</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">sf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">cov</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">log</span><span class="p">([</span><span class="n">ell</span><span class="p">;</span><span class="w"> </span><span class="n">sf</span><span class="p">]);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'likfunc = @likGauss; sn = 0.1; hyp.lik = log(sn);'</span><span class="p">)</span>
-<span class="n">likfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">likGauss</span><span class="p">;</span><span class="w"> </span><span class="n">sn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">lik</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">sn</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d7912caa">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'n = 20;'</span><span class="p">)</span>
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'x = gpml_randn(0.3, n, 1);'</span><span class="p">)</span>
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gpml_randn</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'K = feval(covfunc{:}, hyp.cov, x);'</span><span class="p">)</span>
-<span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">covfunc</span><span class="p">{:},</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">cov</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'mu = feval(meanfunc{:}, hyp.mean, x);'</span><span class="p">)</span>
-<span class="n">mu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">meanfunc</span><span class="p">{:},</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'y = chol(K)''*gpml_randn(0.15, n, 1) + mu + exp(hyp.lik)*gpml_randn(0.2, n, 1);'</span><span class="p">)</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">chol</span><span class="p">(</span><span class="n">K</span><span class="p">)</span><span class="o">'*</span><span class="n">gpml_randn</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="n">hyp</span><span class="p">.</span><span class="n">lik</span><span class="p">)</span><span class="o">*</span><span class="n">gpml_randn</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=34c6d525">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span><span class="w"> </span><span class="nb">disp</span><span class="p">(</span><span class="s">'plot(x, y, ''+'')'</span><span class="p">)</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="w"> </span><span class="mf">3.9</span><span class="p">])</span>
-<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">'input, x'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">'output, y'</span><span class="p">)</span>
-<span class="k">if</span><span class="w"> </span><span class="n">write_fig</span><span class="p">,</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="o">-</span><span class="n">depsc</span><span class="w"> </span><span class="n">f1</span><span class="p">.</span><span class="n">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=54ae0c0c">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'nlml = gp(hyp, @infGaussLik, meanfunc, covfunc, likfunc, x, y)'</span><span class="p">)</span>
-<span class="n">nlml</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="n">meanfunc</span><span class="p">,</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=fdb4a4c0">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'z = linspace(-1.9, 1.9, 101)'';'</span><span class="p">)</span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'[m s2] = gp(hyp, @infGaussLik, meanfunc, covfunc, likfunc, x, y, z);'</span><span class="p">)</span>
-<span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">s2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="n">meanfunc</span><span class="p">,</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=8c7631ff">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'f = [m+2*sqrt(s2); flipdim(m-2*sqrt(s2),1)];'</span><span class="p">)</span><span class="w"> </span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'fill([z; flipdim(z,1)], f, [7 7 7]/8);'</span><span class="p">)</span>
-<span class="nb">fill</span><span class="p">([</span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">]</span><span class="o">/</span><span class="mi">8</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=298742a1">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'hold on; plot(z, m); plot(x, y, ''+'')'</span><span class="p">)</span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s">'LineWidth'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="w"> </span><span class="mf">3.9</span><span class="p">])</span>
-<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">'input, x'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">'output, y'</span><span class="p">)</span>
-<span class="k">if</span><span class="w"> </span><span class="n">write_fig</span><span class="p">,</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="o">-</span><span class="n">depsc</span><span class="w"> </span><span class="n">f2</span><span class="p">.</span><span class="n">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=3156a1e1">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'covfunc = @covSEiso; hyp2.cov = [0; 0]; hyp2.lik = log(0.1);'</span><span class="p">)</span>
-<span class="n">covfunc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">covSEiso</span><span class="p">;</span><span class="w"> </span><span class="n">hyp2</span><span class="p">.</span><span class="n">cov</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">hyp2</span><span class="p">.</span><span class="n">lik</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hyp2 = minimize(hyp2, @gp, -100, @infGaussLik, [], covfunc, likfunc, x, y)'</span><span class="p">)</span>
-<span class="n">hyp2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">minimize</span><span class="p">(</span><span class="n">hyp2</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">gp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=3311808d">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'exp(hyp2.lik)'</span><span class="p">)</span>
-<span class="nb">exp</span><span class="p">(</span><span class="n">hyp2</span><span class="p">.</span><span class="n">lik</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'nlml2 = gp(hyp2, @infGaussLik, [], covfunc, likfunc, x, y)'</span><span class="p">)</span>
-<span class="n">nlml2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp2</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'[m s2] = gp(hyp2, @infGaussLik, [], covfunc, likfunc, x, y, z);'</span><span class="p">)</span>
-<span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">s2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp2</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=53c54bf7">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'fill([z; flipdim(z,1)], f, [7 7 7]/8)'</span><span class="p">);</span>
-<span class="nb">fill</span><span class="p">([</span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">]</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hold on; plot(z, m); plot(x, y, ''+'')'</span><span class="p">);</span>
-<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s">'LineWidth'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">'input, x'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">'output, y'</span><span class="p">)</span>
-<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="w"> </span><span class="mf">3.9</span><span class="p">])</span>
-<span class="k">if</span><span class="w"> </span><span class="n">write_fig</span><span class="p">,</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="o">-</span><span class="n">depsc</span><span class="w"> </span><span class="n">f3</span><span class="p">.</span><span class="n">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d8b13563">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hyp.cov = [0; 0]; hyp.mean = [0; 0]; hyp.lik = log(0.1);'</span><span class="p">)</span>
-<span class="n">hyp</span><span class="p">.</span><span class="n">cov</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">hyp</span><span class="p">.</span><span class="n">lik</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hyp = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, covfunc, likfunc, x, y);'</span><span class="p">)</span>
-<span class="n">hyp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">minimize</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">gp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="n">meanfunc</span><span class="p">,</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'[m s2] = gp(hyp, @infGaussLik, meanfunc, covfunc, likfunc, x, y, z);'</span><span class="p">)</span>
-<span class="p">[</span><span class="n">m</span><span class="w"> </span><span class="n">s2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="n">meanfunc</span><span class="p">,</span><span class="w"> </span><span class="n">covfunc</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Modelo A</span>
+<span class="n">sigma_fA</span><span class="p">,</span> <span class="n">ellA</span> <span class="o">=</span> <span class="n">best_A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">KfA</span> <span class="o">=</span> <span class="n">make_Kfunc</span><span class="p">(</span><span class="n">sigma_fA</span><span class="p">,</span> <span class="n">ellA</span><span class="p">)</span>
+<span class="n">muA</span><span class="p">,</span> <span class="n">covA</span> <span class="o">=</span> <span class="n">gp_posterior</span><span class="p">(</span><span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pT_star</span><span class="p">,</span> <span class="n">KfA</span><span class="p">,</span> <span class="n">Sigma_diag</span><span class="p">())</span>
+<span class="n">stdA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">covA</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
 
-<span class="nb">figure</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'f = [m+2*sqrt(s2); flipdim(m-2*sqrt(s2),1)];'</span><span class="p">)</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'fill([z; flipdim(z,1)], f, [7 7 7]/8)'</span><span class="p">)</span>
-<span class="nb">fill</span><span class="p">([</span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">]</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hold on; plot(z, m); plot(x, y, ''+'');'</span><span class="p">)</span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s">'LineWidth'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">'input, x'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">'output, y'</span><span class="p">)</span>
-<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="w"> </span><span class="mf">3.9</span><span class="p">])</span>
-<span class="k">if</span><span class="w"> </span><span class="n">write_fig</span><span class="p">,</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="o">-</span><span class="n">depsc</span><span class="w"> </span><span class="n">f4</span><span class="p">.</span><span class="n">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=415d8033">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">'large scale regression using the FITC approximation'</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'nu = fix(n/2); u = linspace(-1.3,1.3,nu)'';'</span><span class="p">)</span>
-<span class="n">nu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fix</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="n">nu</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'covfuncF = {@apxSparse, {covfunc}, u};'</span><span class="p">)</span>
-<span class="n">covfuncF</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{@</span><span class="n">apxSparse</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">covfunc</span><span class="p">},</span><span class="w"> </span><span class="n">u</span><span class="p">};</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'[mF s2F] = gp(hyp, @infGaussLik, meanfunc, covfuncF, likfunc, x, y, z);'</span><span class="p">)</span>
-<span class="p">[</span><span class="n">mF</span><span class="w"> </span><span class="n">s2F</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gp</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">infGaussLik</span><span class="p">,</span><span class="w"> </span><span class="n">meanfunc</span><span class="p">,</span><span class="w"> </span><span class="n">covfuncF</span><span class="p">,</span><span class="w"> </span><span class="n">likfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
+<span class="c1"># Modelo B</span>
+<span class="n">sigma_fB</span><span class="p">,</span> <span class="n">ellB</span><span class="p">,</span> <span class="n">alphaB</span><span class="p">,</span> <span class="n">ell_sB</span> <span class="o">=</span> <span class="n">best_B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">KfB</span> <span class="o">=</span> <span class="n">make_Kfunc</span><span class="p">(</span><span class="n">sigma_fB</span><span class="p">,</span> <span class="n">ellB</span><span class="p">)</span>
+<span class="n">SigB</span> <span class="o">=</span> <span class="n">Sigma_corr</span><span class="p">(</span><span class="n">alphaB</span><span class="p">,</span> <span class="n">ell_sB</span><span class="p">)</span>
+<span class="n">muB</span><span class="p">,</span> <span class="n">covB</span> <span class="o">=</span> <span class="n">gp_posterior</span><span class="p">(</span><span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pT_star</span><span class="p">,</span> <span class="n">KfB</span><span class="p">,</span> <span class="n">SigB</span><span class="p">)</span>
+<span class="n">stdB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">covB</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
 
-<span class="nb">figure</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'f = [mF+2*sqrt(s2F); flipdim(mF-2*sqrt(s2F),1)];'</span><span class="p">)</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">mF</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2F</span><span class="p">);</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">mF</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s2F</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'fill([z; flipdim(z,1)], f, [7 7 7]/8)'</span><span class="p">)</span>
-<span class="nb">fill</span><span class="p">([</span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="n">flipdim</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">]</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'hold on; plot(z, mF); plot(x, y, ''+'');'</span><span class="p">)</span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">mF</span><span class="p">,</span><span class="w"> </span><span class="s">'LineWidth'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">'plot(u,1,''o'')'</span><span class="p">)</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">'ko'</span><span class="p">,</span><span class="w"> </span><span class="s">'MarkerSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">'input, x'</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">'output, y'</span><span class="p">)</span>
-<span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">1.9</span><span class="w"> </span><span class="o">-</span><span class="mf">0.9</span><span class="w"> </span><span class="mf">3.9</span><span class="p">])</span>
-<span class="k">if</span><span class="w"> </span><span class="n">write_fig</span><span class="p">,</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="o">-</span><span class="n">depsc</span><span class="w"> </span><span class="n">f5</span><span class="p">.</span><span class="n">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
-<span class="nb">disp</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Dados com barras (usei total como visualização; modelo B separa stat/syst internamente)</span>
+<span class="n">yerr_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sig_stat</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sig_syst</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr_tot</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"data (stat⊕syst)"</span><span class="p">)</span>
+
+<span class="c1"># GP A</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pT_star</span><span class="p">,</span> <span class="n">muA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"GP A: noise diagonal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pT_star</span><span class="p">,</span> <span class="n">muA</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">stdA</span><span class="p">,</span> <span class="n">muA</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">stdA</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># GP B</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pT_star</span><span class="p">,</span> <span class="n">muB</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"GP B: syst correlated"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pT_star</span><span class="p">,</span> <span class="n">muB</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">stdB</span><span class="p">,</span> <span class="n">muB</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">stdB</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$p_T$ [GeV]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$y(p_T)$ (observable)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" src="data:image/png;base64,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unRRzSsDAgLUslyef/75Cu/H3bt3q0DWunXrYutjYmIQFhamLvfeey/MZrNqyilhc/DgwarSJwOoSMhbtmyZ6+duuukm7NmzxxX8tKaa0oyTTTSJiOoe9skjIiIqQSp3o0aNQtOmTV3rIiIi1LWErFmzZqnBTGRAlbVr11bb/lu3bp2qFErFUAKehEEZgGXgwIHFHldYWKiakWokhJ533nkqDMponvJzMujKI488ws+WiKgOYsgjIiIqI+TdeOONxdatWbNGVdpkQBQhTSeln15lyGia0hxz586dxdZLpU5I3zutX52QPnra62pkkBZ30vduypQpqqIoVbwWLVqoKiQREdU9bK5JRETkJj8/H7t27VL92TRSXZO+eRL89HrnP51btmypdMiLjo5W1bnFixcjNze33Me1a9dOhTlpJirB0P3SqFGjYo+VwVtk29566y3Vh0+acGr9+oiIqG5hyCMiInIjUxhIOHrjjTdU9W779u249tprkZGRgZkzZ7oeJ5W8kvPenY0XXngBVqtVTXHwzjvvqNeRyp687o4dO2AwGBAeHo7p06erwVZeffVV1e9u48aNeO6559Rtd9KPT7bz/vvvV/PhSbNSIiKqm9hck4iIqERTTenjds8996iBSzIzM9WgJzKoicxpp6lKJU9Ic8pNmzapgVUkmMk8d1K1k+qdBDuZYkHMnTtXTZEgo2zK3HqyDd26dcMDDzxQ6jmlyeaKFStw6aWXokGDBvxciYjqKJ3DfbxlIiKiOk6mNTh58qRq9ni6Jp0y8bhMhXAmMhCKjL4pzT29gVQpP/roI4wcOdLTm0JERDWEzTWJiIhKVPI6dep02n0iTSul2nc2TTOlOaU0BfWUW265RW0DERH5P1byiIiIikjjFplXbuXKlarJY3U4cuSIqvwJmVBd5tbzhJSUFGRlZanlxMTEcidhJyIi38eQR0RERERE5EfYXJOIiIiIiMiPMOQRERERERH5EYY8IiIiIiIiP8KQR0RERERE5EcY8oiIiIiIiPwIQx4REREREZEfYcgjIiIiIiLyIwx5REREREREfoQhj4iIiIiIyI8w5BEREREREfkRhjwiIiIiIiL4j/8Hb+MH/+9TNfkAAAAASUVORK5CYII="/>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=151612e7">
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=96a41e3e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-matlab"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
