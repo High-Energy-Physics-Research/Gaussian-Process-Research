@@ -13684,113 +13684,87 @@ div.output_html.rendered_html{
 <div class="output_html rendered_html output_subarea">
 <style>
 
-/* ====== Card base (mesmo espírito do simulation-box) ====== */
-.simulation-box {
-  border-left: 6px solid #c0392b;
-  background: linear-gradient(135deg, #fff5f5, #ffffff);
-  padding: 18px 22px;
-  margin: 24px 0;
-  border-radius: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-}
-
-.simulation-title {
-  font-size: 1.6em;
-  font-weight: 650;
-  margin-bottom: 8px;
-  color: #2c2c2c;
-}
-
-.simulation-meta {
-  font-size: 0.95em;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.simulation-meta span { margin-right: 14px; }
-
-.simulation-section {
-  margin-top: 10px;
-  font-size: 1.02em;
-  color: #333;
-}
-
-/* ====== Dataset (tema escuro) ====== */
-.dataset-box {
+/* ====== Dataset (tema escuro) — versão COMPACTA ====== */
+.dataset-box{
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #f5f7fa;
-  padding: 22px 26px;
-  margin: 0 0;
+  color:#f5f7fa;
+
+  /* ↓ era 22px 26px */
+  padding: 14px 16px;
+
+  margin: 0;
   border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.30);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* ✅ garante span total */
-  display: block;
-  width: 100%;
-  max-width: none;
-  box-sizing: border-box;
+  display:block;
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
 }
 
-.dataset-title {
-  font-size: 1.9em;
-  font-weight: 650;
-  margin: 0 0 12px 0;
+/* ↓ título menor + menos espaço */
+.dataset-title{
+  font-size: 1.9em;     /* era 1.9em */
+  font-weight: 700;
+  margin: 0 0 8px 0;     /* era 0 0 12px 0 */
+  line-height: 1.2;
 }
 
-.dataset-grid {
-  display: grid;
+/* ↓ duas colunas mais próximas */
+.dataset-grid{
+  display:grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 18px;             /* era 28px */
 }
 
-.dataset-card {
+/* ↓ cards internos mais “finos” */
+.dataset-card{
   background: rgba(255,255,255,0.06);
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 10px 12px;    /* era 14px 16px */
 }
 
-.dataset-card-title {
-  font-weight: 700;
-  margin-bottom: 10px;
+/* ↓ cabeçalho do card mais compacto */
+.dataset-card-title{
+  font-weight: 800;
+  margin: 0 0 8px 0;     /* era 10px */
+  font-size: 1.0em;
 }
 
-.dataset-row {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  row-gap: 6px;
+/* ↓ linhas “coladas” e tipografia mais curta */
+.dataset-row{
+  display:grid;
+  grid-template-columns: 120px 1fr; /* era 140px 1fr */
+  row-gap: 2px;                     /* era 6px */
+  column-gap: 10px;
+  line-height: 1.15;
+  font-size: 0.95em;                /* compacta sem sumir */
 }
 
-.dataset-key { color: #cfe7f5; }
+.dataset-key{ color:#cfe7f5; }
 
-.dataset-link {
-  color: #9ad1ff;
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(154,209,255,0.6);
-}
-
-.dataset-footer {
-  margin-top: 14px;
-  font-size: 0.95em;
+/* ↓ rodapé bem discreto */
+.dataset-footer{
+  margin-top: 12px;      /* era 14px */
+  font-size: 0.95em;     /* era 0.95em */
   color: #cfe7f5;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;               /* era 10px */
 }
 
-/* ====== Patch Jupyter (opcional mas recomendado p/ evitar shrink-to-fit) ====== */
+/* ====== Patch Jupyter (mantém span total) ====== */
 div.output_html.rendered_html.output_subarea{
-  width: 100% !important;
-  max-width: 100% !important;
-  flex: 0 0 100% !important;
-  box-sizing: border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+  flex:0 0 100% !important;
+  box-sizing:border-box !important;
 }
-
 div.output_html.rendered_html{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
 }
 
 </style>
