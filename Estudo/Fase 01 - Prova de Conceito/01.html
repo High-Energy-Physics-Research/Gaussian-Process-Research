@@ -13235,120 +13235,6 @@ div#notebook {
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
 <div class="cell border-box-sizing code_cell rendered celltag_hide-input celltag_remove-output" id="cell-id=56f91a51">
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_html rendered_html output_subarea">
-<style>
-
-/* ====== Card base (mesmo espírito do simulation-box) ====== */
-.simulation-box {
-  border-left: 6px solid #c0392b;
-  background: linear-gradient(135deg, #fff5f5, #ffffff);
-  padding: 18px 22px;
-  margin: 24px 0;
-  border-radius: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-}
-
-.simulation-title {
-  font-size: 1.6em;
-  font-weight: 650;
-  margin-bottom: 8px;
-  color: #2c2c2c;
-}
-
-.simulation-meta {
-  font-size: 0.95em;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.simulation-meta span { margin-right: 14px; }
-
-.simulation-section {
-  margin-top: 10px;
-  font-size: 1.02em;
-  color: #333;
-}
-
-/* ====== Dataset (tema escuro) ====== */
-.dataset-box {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #f5f7fa;
-  padding: 22px 26px;
-  margin: 24px 0;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.dataset-title {
-  font-size: 1.9em;
-  font-weight: 650;
-  margin: 0 0 12px 0;
-}
-
-.dataset-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-
-.dataset-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 14px 16px;
-}
-
-.dataset-card-title {
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.dataset-row {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  row-gap: 6px;
-}
-
-.dataset-key { color: #cfe7f5; }
-
-.dataset-link {
-  color: #9ad1ff;
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(154,209,255,0.6);
-}
-
-.dataset-footer {
-  margin-top: 14px;
-  font-size: 0.95em;
-  color: #cfe7f5;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* ====== Opcional: centralizar outputs e remover prompts ======
-   (use só se você realmente quiser aplicar no notebook todo) */
-
-/*
-div.prompt { display: none !important; }
-div.output_area { width: 100% !important; margin-left: 0 !important; }
-div.output_area .output_subarea {
-  display: flex !important;
-  justify-content: center !important;
-}
-*/
-
-</style>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_hide-input" id="cell-id=338877f0">
 <div class="output_wrapper">
@@ -13398,7 +13284,7 @@ div.output_area .output_subarea {
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=d9acb8e7">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -13428,6 +13314,7 @@ div.output_area .output_subarea {
     <span class="n">sig_syst</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">syst_p</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">syst_m</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sig_stat</span><span class="p">,</span> <span class="n">sig_syst</span>
+    
 </pre></div>
 </div>
 </div>
