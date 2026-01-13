@@ -13300,23 +13300,22 @@ div#notebook {
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_hepdata_csv</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="c1"># pula linhas de comentário iniciadas com '#'</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"#"</span><span class="p">):</span>
                 <span class="k">continue</span>
-            <span class="c1"># separa por vírgula</span>
             <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)]</span>
             <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
 
+    <span class="c1"># conversão em float</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
-    <span class="n">pT</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">stat_p</span><span class="p">,</span> <span class="n">stat_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
-    <span class="n">syst_p</span><span class="p">,</span> <span class="n">syst_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="n">pT</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1"># coluna 1</span>
+    <span class="n">y</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>    <span class="c1"># coluna 2</span>
+    <span class="n">stat_p</span><span class="p">,</span> <span class="n">stat_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># coluna 3 e 4</span>
+    <span class="n">syst_p</span><span class="p">,</span> <span class="n">syst_m</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span> <span class="c1"># coluna 5 e 6</span>
 
     <span class="c1"># transforma em 1 sigma simétrico (média dos módulos)</span>
     <span class="n">sig_stat</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stat_p</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stat_m</span><span class="p">))</span>
@@ -13325,6 +13324,33 @@ div#notebook {
     <span class="k">return</span> <span class="n">pT</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sig_stat</span><span class="p">,</span> <span class="n">sig_syst</span>
     
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=cacfe9f7">
+<div class="input">
+<div class="prompt input_prompt">In [72]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pT</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sig_syst</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0.0013671  0.001148   0.00097206 0.00080276 0.00072057 0.00080346
+ 0.001127   0.0016592  0.0019646  0.0025837  0.002814   0.0033246
+ 0.0034814  0.00355    0.0036773  0.0042351  0.0041946  0.004387
+ 0.0048377  0.004768   0.0048074  0.0050844  0.0050874  0.0050874
+ 0.0050874  0.0050874  0.0050874  0.0050874  0.0050874 ]
+</pre>
+</div>
 </div>
 </div>
 </div>
