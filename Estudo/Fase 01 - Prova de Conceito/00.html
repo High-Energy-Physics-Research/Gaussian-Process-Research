@@ -13233,6 +13233,15 @@ div#notebook {
             padding-top: 0 !important;
             padding-bottom: 0 !important;
         }
+
+        /* Esconde qualquer saída em stderr no notebook exportado */
+        .output_subarea.output_stream.output_stderr {
+            display: none !important;
+        }
+
+        .output_subarea.output_stream.output_stderr.output_text {
+            display: none !important;
+        }
         </style>
 </head>
 <body>
@@ -13388,14 +13397,9 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=50f7cf0d">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=65203146"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 </div>
 </div>
 </div>
