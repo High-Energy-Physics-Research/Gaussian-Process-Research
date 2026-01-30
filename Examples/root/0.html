@@ -13744,241 +13744,6 @@ nfev: 64
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=3305968f">
-<div class="input">
-<div class="prompt input_prompt">In [27]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">make_real_vs_learned_table</span><span class="p">(</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">sigma_iid_real</span><span class="p">,</span>
-    <span class="n">sigma_corr_real</span><span class="p">,</span>
-    <span class="n">sigma_f_real</span><span class="p">,</span>
-    <span class="n">ell_real</span><span class="p">,</span>
-    <span class="n">fit_uncorr</span><span class="p">,</span>
-    <span class="n">fit_corr</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="c1"># "Real" parameters depend on the dataset construction:</span>
-    <span class="c1"># - Dataset A (i.i.d.): y ~ N(0, sigma_iid_real^2 I)</span>
-    <span class="c1">#   -&gt; no correlated signal, so sigma_f_real_A = 0, ell_real_A = NaN (not defined)</span>
-    <span class="c1">#   -&gt; sigma_n_real_A = sigma_iid_real</span>
-    <span class="c1">#</span>
-    <span class="c1"># - Dataset B (correlated): y ~ N(0, K_SE(sigma_f_real, ell_real) + sigma_corr_real^2 I)</span>
-    <span class="c1">#   -&gt; sigma_f_real_B = sigma_f_real</span>
-    <span class="c1">#   -&gt; ell_real_B = ell_real</span>
-    <span class="c1">#   -&gt; sigma_n_real_B = sigma_corr_real</span>
-
-    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="c1"># Dataset A</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"A (i.i.d.)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"sigma_f"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"sigma_f"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"sigma_f"</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">),</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>  <span class="c1"># undefined relative error vs 0</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"A (i.i.d.)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"ell"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>  <span class="c1"># not meaningful when sigma_f=0 (no signal)</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"ell"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"A (i.i.d.)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"sigma_n"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_iid_real</span><span class="p">),</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_iid_real</span><span class="p">)),</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_iid_real</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sigma_iid_real</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"A (i.i.d.)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"log_marginal_likelihood"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_uncorr</span><span class="p">[</span><span class="s2">"log_marginal_likelihood"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="p">})</span>
-
-    <span class="c1"># Dataset B</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"B (correlated)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"sigma_f"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_f_real</span><span class="p">),</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_f"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_f"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_f_real</span><span class="p">)),</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_f"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_f_real</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sigma_f_real</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"B (correlated)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"ell"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">ell_real</span><span class="p">),</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_corr</span><span class="p">[</span><span class="s2">"ell"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"ell"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">ell_real</span><span class="p">)),</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"ell"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">ell_real</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ell_real</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"B (correlated)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"sigma_n"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_corr_real</span><span class="p">),</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_corr_real</span><span class="p">)),</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fit_corr</span><span class="p">[</span><span class="s2">"sigma_n"</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma_corr_real</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sigma_corr_real</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"B (correlated)"</span><span class="p">,</span>
-        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"log_marginal_likelihood"</span><span class="p">,</span>
-        <span class="s2">"real"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="s2">"learned"</span><span class="p">:</span> <span class="n">fit_corr</span><span class="p">[</span><span class="s2">"log_marginal_likelihood"</span><span class="p">],</span>
-        <span class="s2">"abs_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="s2">"rel_err"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="p">})</span>
-
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-
-    <span class="c1"># Nice formatting</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">fmt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">x</span><span class="p">))):</span>
-            <span class="k">return</span> <span class="s2">""</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">"</span>
-
-    <span class="n">df_fmt</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"real"</span><span class="p">,</span> <span class="s2">"learned"</span><span class="p">,</span> <span class="s2">"abs_err"</span><span class="p">,</span> <span class="s2">"rel_err"</span><span class="p">]:</span>
-        <span class="n">df_fmt</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_fmt</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">df_fmt</span>
-
-<span class="n">df_table</span> <span class="o">=</span> <span class="n">make_real_vs_learned_table</span><span class="p">(</span>
-    <span class="n">sigma_iid_real</span><span class="o">=</span><span class="n">sigma_iid_real</span><span class="p">,</span>
-    <span class="n">sigma_corr_real</span><span class="o">=</span><span class="n">sigma_corr_real</span><span class="p">,</span>
-    <span class="n">sigma_f_real</span><span class="o">=</span><span class="n">sigma_f_real</span><span class="p">,</span>
-    <span class="n">ell_real</span><span class="o">=</span><span class="n">ell_real</span><span class="p">,</span>
-    <span class="n">fit_uncorr</span><span class="o">=</span><span class="n">fit_uncorr</span><span class="p">,</span>
-    <span class="n">fit_corr</span><span class="o">=</span><span class="n">fit_corr</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">df_table</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[27]:</div>
-<div class="output_html rendered_html output_subarea output_execute_result"><div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>dataset</th>
-<th>param</th>
-<th>real</th>
-<th>learned</th>
-<th>abs_err</th>
-<th>rel_err</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>A (i.i.d.)</td>
-<td>sigma_f</td>
-<td>0</td>
-<td>0.192123</td>
-<td>0.192123</td>
-<td></td>
-</tr>
-<tr>
-<th>1</th>
-<td>A (i.i.d.)</td>
-<td>ell</td>
-<td></td>
-<td>2.95624</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<th>2</th>
-<td>A (i.i.d.)</td>
-<td>sigma_n</td>
-<td>0.5</td>
-<td>0.39745</td>
-<td>0.10255</td>
-<td>0.205101</td>
-</tr>
-<tr>
-<th>3</th>
-<td>A (i.i.d.)</td>
-<td>log_marginal_likelihood</td>
-<td></td>
-<td>-21.8973</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<th>4</th>
-<td>B (correlated)</td>
-<td>sigma_f</td>
-<td>1.5</td>
-<td>0.760628</td>
-<td>0.739372</td>
-<td>0.492915</td>
-</tr>
-<tr>
-<th>5</th>
-<td>B (correlated)</td>
-<td>ell</td>
-<td>1.2</td>
-<td>1.06579</td>
-<td>0.134211</td>
-<td>0.111843</td>
-</tr>
-<tr>
-<th>6</th>
-<td>B (correlated)</td>
-<td>sigma_n</td>
-<td>0.1</td>
-<td>0.0989444</td>
-<td>0.00105556</td>
-<td>0.0105556</td>
-</tr>
-<tr>
-<th>7</th>
-<td>B (correlated)</td>
-<td>log_marginal_likelihood</td>
-<td></td>
-<td>9.62679</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div></div>
-</div>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=9dbb138e">
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
@@ -14231,13 +13996,113 @@ nfev: 64
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=108cca43">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="cell border-box-sizing code_cell rendered celltag_hide-input" id="cell-id=3305968f">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[31]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>dataset</th>
+<th>param</th>
+<th>real</th>
+<th>learned</th>
+<th>abs_err</th>
+<th>rel_err</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A (i.i.d.)</td>
+<td>sigma_f</td>
+<td>0</td>
+<td>0.192123</td>
+<td>0.192123</td>
+<td></td>
+</tr>
+<tr>
+<th>1</th>
+<td>A (i.i.d.)</td>
+<td>ell</td>
+<td></td>
+<td>2.95624</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>2</th>
+<td>A (i.i.d.)</td>
+<td>sigma_n</td>
+<td>0.5</td>
+<td>0.39745</td>
+<td>0.10255</td>
+<td>0.205101</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A (i.i.d.)</td>
+<td>log_marginal_likelihood</td>
+<td></td>
+<td>-21.8973</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>4</th>
+<td>B (correlated)</td>
+<td>sigma_f</td>
+<td>1.5</td>
+<td>0.760628</td>
+<td>0.739372</td>
+<td>0.492915</td>
+</tr>
+<tr>
+<th>5</th>
+<td>B (correlated)</td>
+<td>ell</td>
+<td>1.2</td>
+<td>1.06579</td>
+<td>0.134211</td>
+<td>0.111843</td>
+</tr>
+<tr>
+<th>6</th>
+<td>B (correlated)</td>
+<td>sigma_n</td>
+<td>0.1</td>
+<td>0.0989444</td>
+<td>0.00105556</td>
+<td>0.0105556</td>
+</tr>
+<tr>
+<th>7</th>
+<td>B (correlated)</td>
+<td>log_marginal_likelihood</td>
+<td></td>
+<td>9.62679</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div></div>
 </div>
 </div>
 </div>
