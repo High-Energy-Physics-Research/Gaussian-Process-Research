@@ -13591,7 +13591,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=03c48559"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3)-GP-(fit)-%E2%80%94-mesmo-c%C3%B3digo-do-seu-notebook">3) GP (fit) — <strong>mesmo código</strong> do seu notebook<a class="anchor-link" href="#3)-GP-(fit)-%E2%80%94-mesmo-c%C3%B3digo-do-seu-notebook">¶</a></h2>
+<h2 id="3)-GP-(fit)">3) GP (fit)<a class="anchor-link" href="#3)-GP-(fit)">¶</a></h2>
 </div>
 </div>
 </div>
@@ -13732,7 +13732,7 @@ nfev: 84
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=b7fa1231"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4)-GP-(predict)-%E2%80%94-mesmo-c%C3%B3digo-do-seu-notebook">4) GP (predict) — <strong>mesmo código</strong> do seu notebook<a class="anchor-link" href="#4)-GP-(predict)-%E2%80%94-mesmo-c%C3%B3digo-do-seu-notebook">¶</a></h2>
+<h2 id="4)-GP-(predict)">4) GP (predict)<a class="anchor-link" href="#4)-GP-(predict)">¶</a></h2>
 </div>
 </div>
 </div>
@@ -13839,7 +13839,7 @@ nfev: 84
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=012a27dd"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5)-Plot-do-fit-(ROOT/JSROOT)-%E2%80%94-mesma-fun%C3%A7%C3%A3o-do-seu-notebook">5) Plot do fit (ROOT/JSROOT) — <strong>mesma função</strong> do seu notebook<a class="anchor-link" href="#5)-Plot-do-fit-(ROOT/JSROOT)-%E2%80%94-mesma-fun%C3%A7%C3%A3o-do-seu-notebook">¶</a></h2>
+<h2 id="5)-Plot-da-predi%C3%A7%C3%A3o">5) Plot da predição<a class="anchor-link" href="#5)-Plot-da-predi%C3%A7%C3%A3o">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14014,7 +14014,7 @@ nfev: 84
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=7feb1370"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="6)-Plot-extra:-compara%C3%A7%C3%A3o-de-incertezas-%CF%83_exp-vs-%CF%83_GP,obs-(ROOT)">6) Plot extra: comparação de incertezas σ_exp vs σ_GP,obs (ROOT)<a class="anchor-link" href="#6)-Plot-extra:-compara%C3%A7%C3%A3o-de-incertezas-%CF%83_exp-vs-%CF%83_GP,obs-(ROOT)">¶</a></h2>
+<h2 id="6)-Plot:-compara%C3%A7%C3%A3o-de-incertezas-%CF%83_exp-vs-%CF%83_GP,obs">6) Plot: comparação de incertezas σ_exp vs σ_GP,obs<a class="anchor-link" href="#6)-Plot:-compara%C3%A7%C3%A3o-de-incertezas-%CF%83_exp-vs-%CF%83_GP,obs">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14159,7 +14159,7 @@ nfev: 84
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=d76da3e0"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="7)-Tabela:-experimental-vs-GP-(ponto-a-ponto)">7) Tabela: experimental vs GP (ponto-a-ponto)<a class="anchor-link" href="#7)-Tabela:-experimental-vs-GP-(ponto-a-ponto)">¶</a></h2>
+<h2 id="7)-Tabela:-experimental-vs-GP">7) Tabela: experimental vs GP<a class="anchor-link" href="#7)-Tabela:-experimental-vs-GP">¶</a></h2>
 </div>
 </div>
 </div>
@@ -14364,15 +14364,15 @@ nfev: 84
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=2671ee65">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Salvar tabela (útil pra levar pra outro lugar)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Salvar tabela CSV</span>
 <span class="n">out_csv</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"gp_realdata_exp_vs_gp_table.csv"</span><span class="p">)</span>
 <span class="n">table</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Saved:"</span><span class="p">,</span> <span class="n">out_csv</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
 
-<span class="c1"># Também salvar os hiperparâmetros</span>
+<span class="c1"># Salvar os fit (hiperparâmetros)</span>
 <span class="n">hyper_csv</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"gp_realdata_hyperparams.csv"</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">fit_real</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">hyper_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Saved:"</span><span class="p">,</span> <span class="n">hyper_csv</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
@@ -14384,10 +14384,17 @@ nfev: 84
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Saved: /Users/chanayo/Library/Mobile Documents/com~apple~CloudDocs/Repository/Academia/Research/High-Energy-Physics-Research/Gaussian-Process-Research/Estudo/Fase 01 - Prova de Conceito/gp_realdata_exp_vs_gp_table.csv
-Saved: /Users/chanayo/Library/Mobile Documents/com~apple~CloudDocs/Repository/Academia/Research/High-Energy-Physics-Research/Gaussian-Process-Research/Estudo/Fase 01 - Prova de Conceito/gp_realdata_hyperparams.csv
-</pre>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># Salvar tabela CSV</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> out_csv = <span class="ansi-yellow-bg">Path</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">gp_realdata_exp_vs_gp_table.csv</span><span class="ansi-yellow-fg">"</span>)
+<span class="ansi-green-fg">      3</span> table.to_csv(out_csv, index=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Saved:</span><span class="ansi-yellow-fg">"</span>, out_csv.resolve())
+
+<span class="ansi-red-fg">NameError</span>: name 'Path' is not defined</pre>
 </div>
 </div>
 </div>
