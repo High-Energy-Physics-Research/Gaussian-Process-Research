@@ -13243,29 +13243,87 @@ div#notebook {
         .output_subarea.output_stream.output_stderr.output_text {
             display: none !important;
         }
-    
-        .proof-block {
+
+        .math-block {
             margin: 24px 55px;
-            padding: 14px 18px;
-            border-left: 4px solid #555;
-            background: #f7f7f7;
-            border-radius: 6px;
+            border-radius: 14px;
+            background: var(--block-bg, #f7f7f7);
+            border-left: 5px solid var(--block-border, #555);
+            overflow: hidden;
         }
 
-        .proof-block summary {
+        .math-block.theorem {
+            --block-border: #2563eb;
+            --block-bg: #eff6ff;
+        }
+
+        .math-block.definition {
+            --block-border: #0f766e;
+            --block-bg: #ecfdf5;
+        }
+
+        .math-block.lemma {
+            --block-border: #7c3aed;
+            --block-bg: #f5f3ff;
+        }
+
+        .math-block.corollary {
+            --block-border: #d97706;
+            --block-bg: #fffbeb;
+        }
+
+        .math-block.axiom {
+            --block-border: #be123c;
+            --block-bg: #fff1f2;
+        }
+
+        .math-block.proposition {
+            --block-border: #475569;
+            --block-bg: #f8fafc;
+        }
+
+        .math-block.example {
+            --block-border: #0891b2;
+            --block-bg: #ecfeff;
+        }
+
+        .math-block.remark {
+            --block-border: #334155;
+            --block-bg: #f1f5f9;
+        }
+
+        .math-block summary,
+        .math-block-summary {
             cursor: pointer;
-            font-weight: 700;
-            font-size: 1.15em;
+            padding: 22px 26px;
+            list-style: none;
+        }
+
+        .math-block summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .math-block-summary h1,
+        .math-block-summary h2,
+        .math-block-summary h3,
+        .math-block-summary h4,
+        .math-block-summary p {
             text-indent: 0 !important;
         }
 
-        .proof-block p,
-        .proof-block h1,
-        .proof-block h2,
-        .proof-block h3,
-        .proof-block h4,
-        .proof-block h5,
-        .proof-block h6 {
+        .proof-content {
+            padding: 22px 26px;
+            border-top: 1px solid rgba(0,0,0,0.12);
+            background: white;
+        }
+
+        .proof-content p,
+        .proof-content h1,
+        .proof-content h2,
+        .proof-content h3,
+        .proof-content h4,
+        .proof-content ul,
+        .proof-content ol {
             text-indent: 0 !important;
         }
         </style>
@@ -13327,9 +13385,9 @@ div#notebook {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_javascript" id="a09ca44d-9857-479c-97f1-9d9da2e68694">
+<div class="output_subarea output_javascript" id="5457d1d0-d776-4748-b9d3-d00a4b7989cd">
 <script type="text/javascript">
-var element = $('#a09ca44d-9857-479c-97f1-9d9da2e68694');
+var element = $('#5457d1d0-d776-4748-b9d3-d00a4b7989cd');
 
 (function(root) {
   function now() {
@@ -13704,9 +13762,9 @@ var element = $('#a09ca44d-9857-479c-97f1-9d9da2e68694');
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_javascript" id="0bb601cc-1b44-459d-bbf3-646045f560a3">
+<div class="output_subarea output_javascript" id="f2662356-81b6-4fdf-97bb-784c744dd716">
 <script type="text/javascript">
-var element = $('#0bb601cc-1b44-459d-bbf3-646045f560a3');
+var element = $('#f2662356-81b6-4fdf-97bb-784c744dd716');
 (function(root) {
   function embed_document(root) {
     
@@ -14078,9 +14136,9 @@ p(\mathbf{y} \mid X, \theta) =
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_javascript" id="df8e4479-6b01-4b5f-8f5d-f30dca1894c7">
+<div class="output_subarea output_javascript" id="027aa172-91ed-45a9-9335-386ee6c82667">
 <script type="text/javascript">
-var element = $('#df8e4479-6b01-4b5f-8f5d-f30dca1894c7');
+var element = $('#027aa172-91ed-45a9-9335-386ee6c82667');
 (function(root) {
   function embed_document(root) {
     
@@ -14296,9 +14354,9 @@ To make predictions by posterior inference conditioned on observed data we will 
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_javascript" id="56d51e76-44f0-42ea-bdf8-9c1cfaa42b64">
+<div class="output_subarea output_javascript" id="e13d8513-847d-4788-b16f-b26f7df3fba7">
 <script type="text/javascript">
-var element = $('#56d51e76-44f0-42ea-bdf8-9c1cfaa42b64');
+var element = $('#e13d8513-847d-4788-b16f-b26f7df3fba7');
 (function(root) {
   function embed_document(root) {
     
