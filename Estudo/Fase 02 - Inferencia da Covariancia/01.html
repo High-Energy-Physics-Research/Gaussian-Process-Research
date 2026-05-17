@@ -13245,7 +13245,7 @@ div#notebook {
         }
 
         .math-block {
-            margin: 24px 55px;
+            margin: 2px;
             border-radius: 14px;
             background: var(--block-bg, #f7f7f7);
             border-left: 5px solid var(--block-border, #555);
@@ -13325,6 +13325,139 @@ div#notebook {
         .proof-content ul,
         .proof-content ol {
             text-indent: 0 !important;
+        }
+
+        .math-index {
+            margin: 2px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            background: #f8fafc;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+        }
+
+        .math-index h2 {
+            margin-top: 0;
+            text-indent: 0 !important;
+        }
+
+        .math-index ul {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+            list-style: none;
+        }
+
+        .math-index li {
+            text-align: left !important;
+            margin: 6px 0;
+        }
+
+        .math-index a {
+            text-decoration: none;
+            color: #1e293b;
+        }
+
+        .math-index a:hover {
+            text-decoration: underline;
+        }
+
+        .math-index-chapter {
+            margin-top: 14px !important;
+            font-weight: 800;
+        }
+
+        .math-index-section {
+            margin-left: 18px !important;
+            font-weight: 650;
+        }
+
+        .math-index-subsection {
+            margin-left: 36px !important;
+            font-weight: 550;
+        }
+
+        .math-index-block {
+            margin-left: 54px !important;
+            font-size: 0.95em;
+        }
+
+        .math-block-links {
+            margin-top: 18px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.85em;
+            opacity: 0.72;
+            text-align: right;
+        }
+
+        .math-block-links a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .math-block-links a:hover {
+            text-decoration: underline;
+        }
+
+        .math-anchor {
+            scroll-margin-top: 90px;
+        }
+
+        .math-block {
+            scroll-margin-top: 90px;
+        }
+    
+        /* remove espaço externo do markdown renderizado */
+        div.text_cell_render.rendered_html {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* remove padding da célula markdown */
+        div.text_cell {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        /* remove espaço da inner cell */
+        div.inner_cell {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        /* remove margem automática dos blocos HTML renderizados */
+        .rendered_html {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .math-block.result {
+            --block-border: #9333ea;
+            --block-bg: #faf5ff;
+        }
+        .math-block-details {
+            padding: 14px 26px 18px 26px;
+            border-top: 1px solid rgba(0,0,0,0.10);
+            background: rgba(255,255,255,0.55);
+        }
+
+        .math-block-details .math-block-links {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .math-number {
+            color: #94a3b8;
+            font-size: 0.82em;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .math-block.postulate {
+            --block-border: #b45309;
+            --block-bg: #fff7ed;
         }
         </style>
 </head>
