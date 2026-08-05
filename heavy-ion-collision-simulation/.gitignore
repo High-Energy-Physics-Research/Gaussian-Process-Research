@@ -1,0 +1,12 @@
+sims/results/
+sims/outputs/
+sims/logs/
+*.out
+*.err
+*.log
+*.h5
+*.npy
+*.npz
+*.pkl
+*.csv
+.DS_Store
