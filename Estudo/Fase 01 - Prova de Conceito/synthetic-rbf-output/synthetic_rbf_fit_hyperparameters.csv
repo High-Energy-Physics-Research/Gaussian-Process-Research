@@ -1,0 +1,8 @@
+quantity,value
+true RBF ell,0.3
+fitted RBF ell,5.331942529617205
+true correlated fractional amplitude,0.08
+fitted GP sigma_f on log(y),6.683623440281428
+true uncorrelated fractional noise,0.025
+fitted GP sigma_n on log(y),0.09880520887702574
+negative log marginal likelihood,-22.99816084642297
